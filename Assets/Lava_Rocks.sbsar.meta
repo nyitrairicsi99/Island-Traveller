@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6cef020073a2f6f448e4de534f1e3c20
+labels:
+- ground
+- outdoor
+- texture
+- substances
+- seamless
+- tileable
+- lava
+- stone
+SubstanceImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
