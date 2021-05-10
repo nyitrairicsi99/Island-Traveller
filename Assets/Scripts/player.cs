@@ -7,6 +7,7 @@ public class player : MonoBehaviour
     private int stick = 0;
     private int stone = 0;
     private int logs = 0;
+    private int money = 0;
     private bool hasAxe = false;
     private bool boatUsable = false;
     public TextMesh invText;
@@ -21,13 +22,21 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        invText.text = "Összegyûjtött anyagok:\nBot: " + (stick) + "\nKõ: " + (stone) + "\nRönk: " + (logs) + "";
+        if (boatUsable){
+            invText.text = "A hajóba szállva elhagyhatod a szigetet!";
+        } else if (hasAxe)
+        {
+            invText.text = "Összegyûjtött anyagok:\nRönk: " + (logs) + "/1";
+        } else
+        {
+            invText.text = "Összegyûjtött anyagok:\nBot: " + (stick) + "/2\nKõ: " + (stone) + "/1";
+        }
     }
 
     public void PickedUpStick()
     {
         stick++;
-        if (stone > 1 && stick > 2)
+        if (stone >= 1 && stick >= 2)
         {
             hasAxe = true;
         }
@@ -36,18 +45,28 @@ public class player : MonoBehaviour
     public void PickedUpStone()
     {
         stone++;
-        if (stone>1 && stick>2)
+        if (stone>=1 && stick>=2)
         {
             hasAxe = true;
         }
     }
 
-    public void CuttedTree()
+    public bool PickedUpLog()
     {
-        logs+=4;
-        if (logs>=8)
+        if (hasAxe)
         {
-            boatUsable = true;
+            logs++;
+            if (logs >= 1)
+            {
+                boatUsable = true;
+            }
+            return true;
         }
+        return false;
+    }
+
+    public void giveMoney(int amount)
+    {
+        money += amount;
     }
 }
