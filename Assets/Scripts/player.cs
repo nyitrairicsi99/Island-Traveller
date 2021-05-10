@@ -4,25 +4,27 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
-    int stick = 0;
-    int stone = 0;
-    int logs = 0;
-    bool hasAxe = false;
-    bool boatUsable = false;
+    private int stick = 0;
+    private int stone = 0;
+    private int logs = 0;
+    private bool hasAxe = false;
+    private bool boatUsable = false;
+    public TextMesh invText;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        invText = GameObject.Find("InventoryText").GetComponent<TextMesh>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        invText.text = "Összegyûjtött anyagok:\nBot: " + (stick) + "\nKõ: " + (stone) + "\nRönk: " + (logs) + "";
     }
 
-    void PickedUpStick()
+    public void PickedUpStick()
     {
         stick++;
         if (stone > 1 && stick > 2)
@@ -31,7 +33,7 @@ public class player : MonoBehaviour
         }
     }
 
-    void PickedUpStone()
+    public void PickedUpStone()
     {
         stone++;
         if (stone>1 && stick>2)
@@ -40,7 +42,7 @@ public class player : MonoBehaviour
         }
     }
 
-    void CuttedTree()
+    public void CuttedTree()
     {
         logs+=4;
         if (logs>=8)

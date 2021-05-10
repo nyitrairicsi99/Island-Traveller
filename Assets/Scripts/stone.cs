@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class stick : MonoBehaviour
+public class stone : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -13,7 +13,7 @@ public class stick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnCollisionEnter(Collision collision)
@@ -21,7 +21,7 @@ public class stick : MonoBehaviour
         if (collision.gameObject.name == "SimpleFirstPersonWalker")
         {
             Destroy(this.gameObject);
-            collision.gameObject.GetComponent<player>().PickedUpStick();
+            collision.gameObject.GetComponent<player>().PickedUpStone();
         }
 
     }
